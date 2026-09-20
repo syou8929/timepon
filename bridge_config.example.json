@@ -1,0 +1,46 @@
+{
+  "timepon_base": "http://127.0.0.1:18080/",
+  "timepon_public_base": "",
+  "proxy_prefix": "/tp",
+  "room_id": "",
+  "admin_key": "",
+  "http_host": "0.0.0.0",
+  "http_port": 8081,
+  "udp_host": "0.0.0.0",
+  "udp_port": 5010,
+  "tcp_host": "0.0.0.0",
+  "tcp_port": 5011,
+  "trigger_token": "",
+  "cors_allow_origin": "*",
+  "cooldown_sec": 3.0,
+  "command_cooldown_sec": 0.8,
+  "idempotency_ttl_sec": 120,
+  "clear_message_on_trigger": true,
+  "default_profile_udp": "net",
+  "default_profile_tcp": "net",
+  "default_profile_http": "mc",
+  "profiles": {
+    "mc": {
+      "label": "司会スタート",
+      "durationSec": 300,
+      "warn1Sec": 60,
+      "warn2Sec": 30
+    },
+    "net": {
+      "label": "外部ソフト",
+      "durationSec": 420,
+      "warn1Sec": 60,
+      "warn2Sec": 30
+    }
+  },
+  "footswitch": {
+    "enabled": false,
+    "keys": [
+      "f13"
+    ],
+    "action": "trigger",
+    "profile": "mc",
+    "min_interval_sec": 1.0
+  },
+  "log_file": "bridge.log"
+}

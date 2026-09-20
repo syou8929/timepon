@@ -1,0 +1,64 @@
+{
+  "title": "TimePon フットスイッチ",
+  "rules": [
+    {
+      "description": "F13 → TimePon リセット＆スタート（HTTPリクエスト送出・フォーカス非依存）",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f13",
+            "modifiers": { "optional": ["any"] }
+          },
+          "to": [
+            {
+              "shell_command": "/usr/bin/curl -s -m 3 'http://127.0.0.1:8081/trigger?profile=mc' > /dev/null"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "（予備）F14 → TimePon ストップ＆リセット",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f14",
+            "modifiers": { "optional": ["any"] }
+          },
+          "to": [
+            {
+              "shell_command": "/usr/bin/curl -s -m 3 'http://127.0.0.1:8081/reset?profile=mc' > /dev/null"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "（応用）ペダルのF13だけに限定する例 ※ vendor_id / product_id は EventViewer で確認して書き換える",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f13",
+            "modifiers": { "optional": ["any"] }
+          },
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                { "vendor_id": 9610, "product_id": 4133 }
+              ]
+            }
+          ],
+          "to": [
+            {
+              "shell_command": "/usr/bin/curl -s -m 3 'http://127.0.0.1:8081/trigger?profile=mc' > /dev/null"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

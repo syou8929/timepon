@@ -1,0 +1,24 @@
+# Local settings and credentials
+/bridge_config.json
+.env
+.env.*
+!.env.example
+
+# Runtime room data (keep the access-control file)
+/timepon/data/*
+!/timepon/data/.htaccess
+/backups/
+*.log
+*.log.*
+*.pid
+
+# Python environments and caches
+/venv/
+/.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# macOS metadata
+.DS_Store
+._*
